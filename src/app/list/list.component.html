@@ -1,0 +1,25 @@
+<div class="container" *ngIf="blocks.length > 0">
+  <div class="settings-container">
+    <div class="block">Allow remove</div>
+    <input type="checkbox" (change)="changeRemove()"/>
+    <hr/>
+  </div>
+
+  <div class="block-container" *ngFor="let block of blocks">
+    <div
+          [ngClass]="{
+          'red-block': block.color === 'Red',
+          'orange-block': block.color === 'Orange',
+          'blue-block' : block.color === 'Blue',
+          'bold-block' : block.boldSelected,
+          'italic-block' : block.italicSelected}"
+         class="block">{{block.text}}</div>
+    <button type="button" class="remove-button"
+            *ngIf="removeAllowed"
+            (click)="remove(block)">Remove</button>
+  </div>
+</div>
+
+
+<!--
+public colors: string[] = ['Blue','Red','Orange'];-->
